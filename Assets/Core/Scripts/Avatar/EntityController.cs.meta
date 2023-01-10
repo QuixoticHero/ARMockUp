@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6d7b3512d63e6d0458aba510a3156842
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ownerVariable: {fileID: 11400000, guid: 9158c1848f9b40448a2b706aed5219a7, type: 2}
+  - targetDatabase: {fileID: 11400000, guid: 1fa5604629b713f46b7e02007a509c4c, type: 2}
+  - avatarDatabase: {fileID: 11400000, guid: dfcbd76bce57a1e4c95417bfa31e9051, type: 2}
+  - characterTargetVariable: {fileID: 11400000, guid: cabf8194d35cc3047b233a8eed1dd056, type: 2}
+  - characterAvatarVarable: {fileID: 11400000, guid: c1907f430d1227c439e18894d2e12c44, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
