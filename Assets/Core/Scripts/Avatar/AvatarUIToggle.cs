@@ -10,14 +10,9 @@ public class AvatarUIToggle : MonoBehaviour
 
     private void Awake()
     {
-        Transform parent = transform;
-        while(parent != null && avatar == null)
-        {
-            avatar = parent.GetComponent<IAvatar>();
-            parent = parent.parent;
-        }
+        avatar = transform.GetFirstComponentFromParent<IAvatar>();
 
-        if(avatar == null)
+        if (avatar == null)
         {
             Debug.Log("No Avatar Type Found");
             Destroy(gameObject);

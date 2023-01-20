@@ -49,15 +49,16 @@ public class EntityController : MonoBehaviour, IAvatar
     protected void OnEnable()
     {
         if (targetDatabase == null || avatarDatabase == null) return;
+        
+        ITarget target = GetComponent<ITarget>();
 
         if (ownerVariable.Value == OwnerId)
         {
-            avatarDatabase.Add(this);
+            avatarDatabase.Add(target, this);
         }
         else
         {
-            ITarget target = GetComponent<ITarget>();
-            targetDatabase.AddTarget(target);
+            targetDatabase.Add(target);
         }
     }
 
@@ -65,14 +66,15 @@ public class EntityController : MonoBehaviour, IAvatar
     {
         if (targetDatabase == null || avatarDatabase == null) return;
 
+        ITarget target = GetComponent<ITarget>();
+
         if (ownerVariable.Value == OwnerId)
         {
-            avatarDatabase.Remove(this);
+            avatarDatabase.Remove(target);
         }
         else
         {
-            ITarget target = GetComponent<ITarget>();
-            targetDatabase.RemoveTarget(target);
+            targetDatabase.Remove(target);
         }
     }
 

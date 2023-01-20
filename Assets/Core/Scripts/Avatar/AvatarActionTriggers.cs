@@ -24,7 +24,7 @@ public class AvatarActionTriggers : MonoBehaviour, IDisableLocomotion
     {
         if (!CanUseAction() || DisableLocomotion()) return;
 
-        m_energySource.UseEnergy(actionEnergyCost);
+        m_energySource.ModifyEnergy(actionEnergyCost);
 
         m_animCtrl.AnimationStateHash = m_stateHash;
         m_animCtrl.AnimationCurve = curve;
@@ -34,9 +34,11 @@ public class AvatarActionTriggers : MonoBehaviour, IDisableLocomotion
 
     private void Awake()
     {
-        m_anim = GetComponent<Animator>();
-        m_animCtrl = GetComponent<AvatarAnimationController>();
-        m_energySource = GetComponent<IEnergySource>();
+        Transform parent = transform.GetHighParentWithComponentType<IAvatar>();
+
+        m_anim = parent.GetComponent<Animator>();
+        m_animCtrl = parent.GetComponent<AvatarAnimationController>();
+        m_energySource = parent.GetComponent<IEnergySource>();
 
         m_stateHash = Animator.StringToHash(nameState);
         m_stateId = Animator.StringToHash(nameId);
@@ -44,7 +46,7 @@ public class AvatarActionTriggers : MonoBehaviour, IDisableLocomotion
 
     private void OnEnable()
     {
-        IDisableLocomotion[] scripts = GetComponents<IDisableLocomotion>();
+        IDisableLocomotion[] scripts = transform.GetComponentsInHierarchy<IDisableLocomotion>();
         foreach (IDisableLocomotion script in scripts)
         {
             script.onDisableLocomotion += IsActionActive;
@@ -53,7 +55,7 @@ public class AvatarActionTriggers : MonoBehaviour, IDisableLocomotion
 
     private void OnDisable()
     {
-        IDisableLocomotion[] scripts = GetComponents<IDisableLocomotion>();
+        IDisableLocomotion[] scripts = transform.GetComponentsInHierarchy<IDisableLocomotion>();
         foreach (IDisableLocomotion script in scripts)
         {
             script.onDisableLocomotion -= IsActionActive;

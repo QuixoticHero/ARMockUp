@@ -12,13 +12,13 @@ public class SimpleTarget : MonoBehaviour, ITarget
     {
         if (targetDatabase == null) return;
 
-        targetDatabase.AddTarget(this);
+        targetDatabase.Add(this);
     }
 
     protected void OnDisable()
     {
         if (targetDatabase == null) return;
 
-        targetDatabase.RemoveTarget(this);
+        targetDatabase.Remove(this);
     }
 }

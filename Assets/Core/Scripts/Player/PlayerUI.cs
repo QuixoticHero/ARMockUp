@@ -15,18 +15,20 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameEvent characterAttackHeavyGameEvent;
     [SerializeField] private GameEvent characterAttackLightGameEvent;
 
-    [SerializeField] private ITargetVariable characterTargetVariable;
-    [SerializeField] private ITargetVariable possibleTargetVariable;
+    [SerializeField] private ITargetVariable selectedTargetVariable;
+    [SerializeField] private ITargetVariable highlightedTargetVariable;
 
-    [SerializeField] private IAvatarStatsVariable characterAvatarStatsVarable;
-    [SerializeField] private IAvatarVariable characterAvatarVariable;
-    [SerializeField] private IAvatarVariable possibleAvatarVariable;
+    [SerializeField] private IAvatarStatsVariable selectedAvatarStatsVarable;
+    [SerializeField] private IAvatarVariable selectedAvatarVariable;
+    [SerializeField] private ITargetVariable selectedTargetAvatarVariable;
+    [SerializeField] private ITargetVariable highlightedAvatarVariable;
+    [SerializeField] private AvatarDatabase avatarDatabase;
 
     private Coroutine coMovement = null;
 
     public void CharacterAvatarStats(IAvatar avatar)
     {
-        characterAvatarStatsVarable.Value = (avatar != null) ? avatar.AvatarStats : null;
+        selectedAvatarStatsVarable.Value = (avatar != null) ? avatar.AvatarStats : null;
     }
 
     private void Awake()
@@ -52,16 +54,17 @@ public class PlayerUI : MonoBehaviour
             += cxt => ToggleCharacterTarget();
 
         input.CharacterControls.ReleaseTarget.performed
-            += cxt => characterTargetVariable.Value = null;
+            += cxt => selectedTargetVariable.Value = null;
 
         input.CharacterControls.SetAvatar.performed
             += cxt => SetCharacterAvtar();
 
         input.CharacterControls.DebugNoAvatar.performed
             += cxt => 
-            { 
-                characterAvatarVariable.Value = null;
-                characterAvatarStatsVarable.Value = null;
+            {
+                selectedAvatarVariable.Value = null;
+                selectedAvatarStatsVarable.Value = null;
+                selectedTargetAvatarVariable.Value = null;
             };
     }
 
@@ -90,27 +93,28 @@ public class PlayerUI : MonoBehaviour
 
     private void ToggleCharacterTarget()
     {
-        if (characterTargetVariable.Value != null  && possibleTargetVariable.Value != null 
-        && characterTargetVariable.Value != possibleTargetVariable.Value)
+        if (selectedTargetVariable.Value != null  && highlightedTargetVariable.Value != null 
+        && selectedTargetVariable.Value != highlightedTargetVariable.Value)
         {
-            characterTargetVariable.Value = possibleTargetVariable.Value;
+            selectedTargetVariable.Value = highlightedTargetVariable.Value;
         }
-        else if (characterTargetVariable.Value != null)
+        else if (selectedTargetVariable.Value != null)
         {
-            characterTargetVariable.Value = null;
+            selectedTargetVariable.Value = null;
         }
-        else if (possibleTargetVariable.Value != null)
+        else if (highlightedTargetVariable.Value != null)
         {
-            characterTargetVariable.Value = possibleTargetVariable.Value;
+            selectedTargetVariable.Value = highlightedTargetVariable.Value;
         }
     }
 
     private void SetCharacterAvtar()
     {
-        if (possibleAvatarVariable.Value != null
-        && characterAvatarVariable.Value != possibleAvatarVariable.Value)
+        if (highlightedAvatarVariable.Value != null
+        && selectedTargetAvatarVariable.Value != highlightedAvatarVariable.Value)
         {
-            characterAvatarVariable.Value = possibleAvatarVariable.Value;
+            selectedTargetAvatarVariable.Value = highlightedAvatarVariable.Value;
+            selectedAvatarVariable.Value = avatarDatabase.GetAvatar(selectedTargetAvatarVariable.Value);
         }
     }
 }

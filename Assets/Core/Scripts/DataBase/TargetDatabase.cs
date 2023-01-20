@@ -7,19 +7,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TargetDatabase", menuName = "Database/TargetDatabase", order = 120)]
 public class TargetDatabase : ScriptableObject
 {
-    private List<ITarget> targets = new List<ITarget>();
+    protected List<ITarget> targets = new List<ITarget>();
 
     [Range(0,2)]
-    [SerializeField] private float distanceImportanceMod = 1.2f;
+    [SerializeField] protected float distanceImportanceMod = 1.2f;
 
     [Range(0.707f, 1)]
-    [SerializeField] private float povAngle = 1.2f;
+    [SerializeField] protected float povAngle = 1.2f;
 
     [Range(5, 15)]
-    [SerializeField] private float maxDistance = 15;
+    [SerializeField] protected float maxDistance = 15;
 
     [Serializable]
-    private struct TargetData
+    protected struct TargetData
     {
         public ITarget target;
         public float angle;
@@ -36,24 +36,6 @@ public class TargetDatabase : ScriptableObject
         {
             return angle - dist;
         }
-    }
-
-    public ITarget[] GetTargetsWithinRange(Vector3 origin, Vector3 forward)
-    {
-        List<ITarget> inRange = new List<ITarget>();
-
-        foreach (ITarget target in targets)
-        {
-            float targetDot = Vector3.Dot(forward, (target.Position - origin).normalized);
-            float distance = Vector3.Distance(target.Position, origin) / maxDistance;
-
-            if (targetDot > povAngle && distance < 1)
-            {
-                inRange.Add(target);
-            }
-        }
-
-        return inRange.ToArray();
     }
 
     public ITarget GetTargetWithinRange(Vector3 origin, Vector3 forward, ITarget ignoreTarget = null)
@@ -78,17 +60,12 @@ public class TargetDatabase : ScriptableObject
         return result.target;
     }
 
-    public ITarget[] GetTargets()
-    {
-        return targets.ToArray();
-    }
-
-    public void AddTarget(ITarget target)
+    public void Add(ITarget target)
     {
         targets.Add(target);
     }
 
-    public void RemoveTarget(ITarget target)
+    public virtual void Remove(ITarget target)
     {
         if(targets.Contains(target))
         {

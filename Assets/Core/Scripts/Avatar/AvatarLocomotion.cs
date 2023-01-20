@@ -93,7 +93,7 @@ public class AvatarLocomotion : MonoBehaviour, IDisableLocomotion
     {
         if (moveRate <= walkRate) return;
 
-        m_energySource.UseEnergy(runningCost * Time.fixedDeltaTime);
+        m_energySource.ModifyEnergy(runningCost * Time.fixedDeltaTime);
         float adjustedRate = runningCurve.Evaluate(m_energySource.EnergyRatio) * runRate;
 
         moveRate = Mathf.Clamp(adjustedRate, walkRate, runRate);

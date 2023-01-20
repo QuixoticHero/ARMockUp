@@ -496,6 +496,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1643187181}
+  - {fileID: 2114489701}
   - {fileID: 209499233}
   - {fileID: 1803956322}
   m_Father: {fileID: 0}
@@ -518,11 +520,13 @@ MonoBehaviour:
   characterEvadeGameEvent: {fileID: 11400000, guid: 5933c6e50e6bc724b899be1f6086e984, type: 2}
   characterAttackHeavyGameEvent: {fileID: 11400000, guid: 909d85034484da046a4e84ef12bec979, type: 2}
   characterAttackLightGameEvent: {fileID: 11400000, guid: a6bf355715327d742b5b4598eed583cf, type: 2}
-  characterTargetVariable: {fileID: 11400000, guid: cabf8194d35cc3047b233a8eed1dd056, type: 2}
-  possibleTargetVariable: {fileID: 11400000, guid: 433d51ef149112d46b52411aae3b82bf, type: 2}
-  characterAvatarStatsVarable: {fileID: 11400000, guid: 02195f2acd459ff4b89bafae745b9a79, type: 2}
-  characterAvatarVariable: {fileID: 11400000, guid: c1907f430d1227c439e18894d2e12c44, type: 2}
-  possibleAvatarVariable: {fileID: 11400000, guid: 91e07bbf08f22184eac8dcbc5f158056, type: 2}
+  selectedTargetVariable: {fileID: 11400000, guid: cabf8194d35cc3047b233a8eed1dd056, type: 2}
+  highlightedTargetVariable: {fileID: 11400000, guid: 433d51ef149112d46b52411aae3b82bf, type: 2}
+  selectedAvatarStatsVarable: {fileID: 11400000, guid: 02195f2acd459ff4b89bafae745b9a79, type: 2}
+  selectedAvatarVariable: {fileID: 11400000, guid: c1907f430d1227c439e18894d2e12c44, type: 2}
+  selectedTargetAvatarVariable: {fileID: 11400000, guid: cb6a75d72cea3354b8d212c36b7fc0d9, type: 2}
+  highlightedAvatarVariable: {fileID: 11400000, guid: 66276f1f86afe1d45af02d666a4c9c6f, type: 2}
+  avatarDatabase: {fileID: 11400000, guid: 9e1ae853c58fddf4889142e1113b4096, type: 2}
 --- !u!1 &255466329
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +778,10 @@ PrefabInstance:
     - target: {fileID: 5451736791805406432, guid: 2ea20e7298e65ab4a969bb5e30ee46c8, type: 3}
       propertyPath: m_Name
       value: Target (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451736791805406432, guid: 2ea20e7298e65ab4a969bb5e30ee46c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5451736791805406433, guid: 2ea20e7298e65ab4a969bb5e30ee46c8, type: 3}
       propertyPath: m_RootOrder
@@ -1108,8 +1116,6 @@ GameObject:
   - component: {fileID: 611013927}
   - component: {fileID: 611013929}
   - component: {fileID: 611013930}
-  - component: {fileID: 611013931}
-  - component: {fileID: 611013932}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1276,46 +1282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterMovementVariable: {fileID: 11400000, guid: e60e05a3228d5c943bae996b16b462d3, type: 2}
---- !u!114 &611013931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611013923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5974cda91219a9e4dbf45fbf4984905c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UITargetPosition: {fileID: 11400000, guid: 38263fd186223aa469eb7b537930f820, type: 2}
-  possibleTargetVarable: {fileID: 11400000, guid: 433d51ef149112d46b52411aae3b82bf, type: 2}
-  characterTargetVarable: {fileID: 11400000, guid: cabf8194d35cc3047b233a8eed1dd056, type: 2}
-  targetDatabase: {fileID: 11400000, guid: 1fa5604629b713f46b7e02007a509c4c, type: 2}
-  CanvasHeight: 2800
-  CanvasWidth: 1600
-  fps: 0.04167
-  currFps: 0
---- !u!114 &611013932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611013923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3608d690629511f4689120d87421cc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiSelectAvatarPosition: {fileID: 11400000, guid: 7394a3ab7c080154e8233d54fc41936e, type: 2}
-  possibleAvatarVarable: {fileID: 11400000, guid: 91e07bbf08f22184eac8dcbc5f158056, type: 2}
-  characterAvatarVarable: {fileID: 11400000, guid: c1907f430d1227c439e18894d2e12c44, type: 2}
-  avatarDatabase: {fileID: 11400000, guid: dfcbd76bce57a1e4c95417bfa31e9051, type: 2}
-  CanvasHeight: 2800
-  CanvasWidth: 1600
-  fps: 0.03167
-  currFps: 0
 --- !u!1001 &774692729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1371,14 +1337,6 @@ PrefabInstance:
     - target: {fileID: 2924000215353602839, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
       propertyPath: m_Name
       value: Avatar (enemy)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2924000215353602839, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3870781371228521114, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
-      propertyPath: _ownerId
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4483711582084660335, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
       propertyPath: _ownerId
@@ -1564,7 +1522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2585050899078539693, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.12
+      value: -0.52
       objectReference: {fileID: 0}
     - target: {fileID: 2585050899078539693, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1572,7 +1530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2585050899078539693, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5
+      value: 3.84
       objectReference: {fileID: 0}
     - target: {fileID: 2585050899078539693, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1605,10 +1563,6 @@ PrefabInstance:
     - target: {fileID: 2924000215353602839, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
       propertyPath: m_Name
       value: Avatar (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2924000215353602839, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2321,6 +2275,10 @@ PrefabInstance:
     - target: {fileID: 5451736791805406432, guid: 2ea20e7298e65ab4a969bb5e30ee46c8, type: 3}
       propertyPath: m_Name
       value: Target (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451736791805406432, guid: 2ea20e7298e65ab4a969bb5e30ee46c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5451736791805406433, guid: 2ea20e7298e65ab4a969bb5e30ee46c8, type: 3}
       propertyPath: m_RootOrder
@@ -3084,7 +3042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e50b29353ff9f4cbf301a2be097568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterAvatarVariable: {fileID: 11400000, guid: c1907f430d1227c439e18894d2e12c44, type: 2}
+  selectedAvatarVariable: {fileID: 11400000, guid: c1907f430d1227c439e18894d2e12c44, type: 2}
+  selectedTargetAvatarVariable: {fileID: 11400000, guid: cb6a75d72cea3354b8d212c36b7fc0d9, type: 2}
   Ownerid: 0
 --- !u!1 &1584562899
 GameObject:
@@ -3314,6 +3273,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraVariable: {fileID: 11400000, guid: 28ff56319bf223446b2efabfe10312e1, type: 2}
   offset: {x: 0, y: 0.1, z: -0.3}
+--- !u!1 &1643187180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1643187181}
+  - component: {fileID: 1643187182}
+  m_Layer: 0
+  m_Name: GuiClosestTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1643187181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643187180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 238787103}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1643187182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643187180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5974cda91219a9e4dbf45fbf4984905c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransformVariable: {fileID: 11400000, guid: 28ff56319bf223446b2efabfe10312e1, type: 2}
+  uiSelectPositionVariable: {fileID: 11400000, guid: 38263fd186223aa469eb7b537930f820, type: 2}
+  highlightedVarable: {fileID: 11400000, guid: 433d51ef149112d46b52411aae3b82bf, type: 2}
+  selectedVarable: {fileID: 11400000, guid: cabf8194d35cc3047b233a8eed1dd056, type: 2}
+  targetDatabase: {fileID: 11400000, guid: 1fa5604629b713f46b7e02007a509c4c, type: 2}
+  CanvasHeight: 2800
+  CanvasWidth: 1600
+  fps: 0.03167
+  currFps: 0
 --- !u!1 &1655698952
 GameObject:
   m_ObjectHideFlags: 0
@@ -3577,6 +3589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Target (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5451736791805406432, guid: 2ea20e7298e65ab4a969bb5e30ee46c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5451736791805406433, guid: 2ea20e7298e65ab4a969bb5e30ee46c8, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -3734,6 +3750,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835808232}
   m_CullTransparentMesh: 1
+--- !u!1 &2114489700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2114489701}
+  - component: {fileID: 2114489702}
+  m_Layer: 0
+  m_Name: GuiClosestAvatar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2114489701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114489700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 238787103}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2114489702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114489700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5974cda91219a9e4dbf45fbf4984905c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransformVariable: {fileID: 11400000, guid: 28ff56319bf223446b2efabfe10312e1, type: 2}
+  uiSelectPositionVariable: {fileID: 11400000, guid: 7394a3ab7c080154e8233d54fc41936e, type: 2}
+  highlightedVarable: {fileID: 11400000, guid: 66276f1f86afe1d45af02d666a4c9c6f, type: 2}
+  selectedVarable: {fileID: 11400000, guid: cb6a75d72cea3354b8d212c36b7fc0d9, type: 2}
+  targetDatabase: {fileID: 11400000, guid: 9e1ae853c58fddf4889142e1113b4096, type: 2}
+  CanvasHeight: 2800
+  CanvasWidth: 1600
+  fps: 0.03167
+  currFps: 0
 --- !u!4 &543450652579631112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2585050899078539693, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
@@ -3795,10 +3864,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Avatar
       objectReference: {fileID: 0}
-    - target: {fileID: 2924000215353602839, guid: 262fc6ff6a02ae143b720f7a035830fc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3815,6 +3880,10 @@ PrefabInstance:
     - target: {fileID: 5451736791805406432, guid: 2ea20e7298e65ab4a969bb5e30ee46c8, type: 3}
       propertyPath: m_Name
       value: Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451736791805406432, guid: 2ea20e7298e65ab4a969bb5e30ee46c8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5451736791805406433, guid: 2ea20e7298e65ab4a969bb5e30ee46c8, type: 3}
       propertyPath: m_RootOrder
@@ -3873,6 +3942,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 42376454, guid: 4d2efcb8fa20f104a99e3f0a8d65171d, type: 3}
+      propertyPath: cameraTransformVariable
+      value: 
+      objectReference: {fileID: 11400000, guid: 28ff56319bf223446b2efabfe10312e1, type: 2}
+    - target: {fileID: 42376454, guid: 4d2efcb8fa20f104a99e3f0a8d65171d, type: 3}
+      propertyPath: uiSelectPositionVariable
+      value: 
+      objectReference: {fileID: 11400000, guid: 38263fd186223aa469eb7b537930f820, type: 2}
     - target: {fileID: 6824133070492485276, guid: 4d2efcb8fa20f104a99e3f0a8d65171d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3925,7 +4002,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 42376454, guid: 4d2efcb8fa20f104a99e3f0a8d65171d, type: 3}
+    - {fileID: 525816529, guid: 4d2efcb8fa20f104a99e3f0a8d65171d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

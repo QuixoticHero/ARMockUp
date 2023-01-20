@@ -1,13 +1,12 @@
 using ScriptableObjectArchitecture;
-using System.Collections;
 using System.Collections.Generic;
-using System.Transactions;
 using UnityEngine;
-using System.Linq;
 
 public class DemoSetSelectedAvatar : MonoBehaviour
 {
-    [SerializeField] private IAvatarVariable characterAvatarVariable;
+    [SerializeField] private IAvatarVariable selectedAvatarVariable;
+    [SerializeField] private ITargetVariable selectedTargetAvatarVariable;
+
     [SerializeField] private int Ownerid = 0;
 
     void Start()
@@ -26,6 +25,7 @@ public class DemoSetSelectedAvatar : MonoBehaviour
 
         if (avatars.Count <= 0) return;
 
-        characterAvatarVariable.Value = avatars[0];
+        selectedAvatarVariable.Value = avatars[0];
+        selectedTargetAvatarVariable.Value = avatars[0];
     }
 }
